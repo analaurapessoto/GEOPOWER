@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GEOPOWER - Cinejornal 1970 (Introdução)</title>
+  <meta name="description" content="GEOPOWER: Cinejornal animado dos anos 1970 - A corrida pela política energética mundial.">
+  <!-- Retro Fonts from Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Courier+Prime:ital,wght@0,400;0,700;1,400&family=Special+Elite&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Main Retro Intro Screen Container -->
+  <div class="retro-intro-screen" id="retroIntroScreen">
+    
+    <!-- Vintage Film Overlays -->
+    <div class="film-vignette"></div>
+    <div class="film-scratches"></div>
+    <div class="film-grain-overlay"></div>
+    <div class="projector-light-beam"></div>
+
+    <!-- Initial Start Projector & Audio Prompt Overlay -->
+    <div class="start-prompt-overlay active" id="startPromptOverlay">
+      <div class="start-prompt-card">
+        <div class="start-prompt-badge">CINEMA 1970</div>
+        <h2 class="start-prompt-title">GEOPOWER • CINEJORNAL</h2>
+        <p class="start-prompt-text">Clique em qualquer lugar para ligar o projetor, o som ambiente e a locução.</p>
+        <button class="btn-retro-cta" id="btnStartProjector" onclick="window.startExperience && window.startExperience()">
+          <span class="btn-icon">📽️</span>
+          <span class="btn-text">LIGAR PROJETOR E LOCUÇÃO</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Header Cinejornal Bar -->
+    <header class="newsreel-header">
+      <div class="newsreel-badge">EDITION 1970</div>
+      <h1 class="newsreel-title">GEOPOWER • CINEJORNAL INTERNACIONAL</h1>
+      <div class="newsreel-date">18 DE AGOSTO DE 1970</div>
+    </header>
+
+    <!-- Main Projector Frame with Sprocket Holes -->
+    <main class="projector-viewport-wrapper">
+      
+      <!-- Film Strip Sprocket Holes Left -->
+      <div class="sprocket-strip sprocket-left">
+        <div class="sprocket-hole"></div>
+        <div class="sprocket-hole"></div>
+        <div class="sprocket-hole"></div>
+        <div class="sprocket-hole"></div>
+        <div class="sprocket-hole"></div>
+        <div class="sprocket-hole"></div>
+      </div>
+
+      <!-- Cinema Screen Container (16:9 Aspect Ratio) -->
+      <div class="projector-screen" id="projectorScreen">
+
+        <!-- Scene 1: A Explosão do Consumo (1970) -->
+        <section class="newsreel-scene active" id="scene-1" data-scene="1" data-duration="5500">
+          <div class="scene-image-wrapper">
+            <img src="assets/scene1.jpg" alt="Cena 1: A Explosão do Consumo (1970)" class="scene-img">
+            <div class="scene-stamp">CENA 01 / 1970</div>
+          </div>
+          <div class="scene-caption-box">
+            <h2 class="scene-heading">CENA 1: A EXPLOSÃO DO CONSUMO (1970)</h2>
+            <p class="scene-narration" id="narration-1">
+              "O ano é 1970! O mundo marcha a passos largos rumo ao progresso industrial. Máquinas que nunca dormem, cidades iluminadas dia e noite e um apetite insaciável por energia!"
+            </p>
+          </div>
+        </section>
+
+        <!-- Scene 2: O Sinal de Alerta (A Vulnerabilidade dos Recursos) -->
+        <section class="newsreel-scene" id="scene-2" data-scene="2" data-duration="6000">
+          <div class="scene-image-wrapper">
+            <img src="assets/scene2.jpg" alt="Cena 2: O Sinal de Alerta" class="scene-img">
+            <div class="scene-stamp">CENA 02 / CRISE</div>
+          </div>
+          <div class="scene-caption-box">
+            <h2 class="scene-heading">CENA 2: O SINAL DE ALERTA</h2>
+            <p class="scene-narration" id="narration-2">
+              "Mas a locomotiva do desenvolvimento encontra seus limites! Secas severas esvaziam grandes represas, o petróleo torna-se uma arma de disputa geopolítica e as rotas marítimas mundiais entram em colapso!"
+            </p>
+          </div>
+        </section>
+
+        <!-- Scene 3: A Grande Cúpula Internacional -->
+        <section class="newsreel-scene" id="scene-3" data-scene="3" data-duration="6000">
+          <div class="scene-image-wrapper">
+            <img src="assets/scene3.jpg" alt="Cena 3: A Grande Cúpula Internacional" class="scene-img">
+            <div class="scene-stamp">CENA 03 / DIPLOMACIA</div>
+          </div>
+          <div class="scene-caption-box">
+            <h2 class="scene-heading">CENA 3: A GRANDE CÚPULA INTERNACIONAL</h2>
+            <p class="scene-narration" id="narration-3">
+              "Nenhuma nação é uma ilha! Isolados, todos enfrentam o colapso. Juntos, os líderes mundiais são convocados para a mais decisiva conferência internacional da história recente."
+            </p>
+          </div>
+        </section>
+
+        <!-- Scene 4: A Convocação do Jogador (Chamada para Ação) -->
+        <section class="newsreel-scene" id="scene-4" data-scene="4" data-duration="7000">
+          <div class="scene-image-wrapper">
+            <img src="assets/scene4.jpg" alt="Cena 4: A Convocação do Jogador" class="scene-img">
+            <div class="scene-stamp">CENA 04 / COMANDO</div>
+          </div>
+          <div class="scene-caption-box">
+            <h2 class="scene-heading">CENA 4: A CONVOCAÇÃO DO JOGADOR</h2>
+            <p class="scene-narration" id="narration-4">
+              "Você assume o comando da política energética de sua pátria. Comércio, diplomacia, ciência e coragem. O destino de cinquenta anos de história está sob o seu controle. Que comece a corrida energética!"
+            </p>
+          </div>
+        </section>
+
+        <!-- Final Call to Action Overlay (Shown on Scene 4 completion or button) -->
+        <div class="cta-overlay" id="ctaOverlay">
+          <div class="cta-card">
+            <div class="cta-badge">INÍCIO DA CAMPANHA</div>
+            <h3 class="cta-title">A CORRIDA ENERGÉTICA COMEÇOU</h3>
+            <p class="cta-subtitle">Assuma a liderança global e determine a estratégia energética do seu país.</p>
+            <button class="btn-retro-cta" id="btnStartGame" onclick="window.goToSetupScreen && window.goToSetupScreen()">
+              <span class="btn-icon">⚡</span>
+              <span class="btn-text">ASSUMIR O COMANDO (INICIAR JOGO)</span>
+            </button>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Film Strip Sprocket Holes Right -->
+      <div class="sprocket-strip sprocket-right">
+        <div class="sprocket-hole"></div>
+        <div class="sprocket-hole"></div>
+        <div class="sprocket-hole"></div>
+        <div class="sprocket-hole"></div>
+        <div class="sprocket-hole"></div>
+        <div class="sprocket-hole"></div>
+      </div>
+
+    </main>
+
+    <!-- Newsreel Controls and Progress Bar -->
+    <footer class="newsreel-controls">
+      
+      <div class="progress-bar-container">
+        <div class="progress-bar-fill" id="progressBar"></div>
+      </div>
+
+      <div class="controls-toolbar">
+        
+        <div class="scene-indicator">
+          <button class="scene-pill active" data-goto="1">1</button>
+          <button class="scene-pill" data-goto="2">2</button>
+          <button class="scene-pill" data-goto="3">3</button>
+          <button class="scene-pill" data-goto="4">4</button>
+        </div>
+
+        <div class="playback-buttons">
+          <button class="btn-control" id="btnPrev" title="Cena Anterior (Seta Esquerda)">⏮ ANTERIOR</button>
+          <button class="btn-control primary" id="btnNext" title="Próxima Cena (Seta Direita)">PRÓXIMA ⏭</button>
+        </div>
+
+        <div class="audio-controls">
+          <button class="btn-control toggle-active" id="btnSoundToggle" title="Som de Projetor e Vinil (Tecla S)">
+            🔊 SOM
+          </button>
+          <button class="btn-control toggle-active" id="btnVoiceToggle" title="Narração por Voz (Tecla V)">
+            🎙️ LOCUÇÃO
+          </button>
+        </div>
+
+      </div>
+
+    </footer>
+
+  </div>
+
+  <!-- Player Setup Screen (Cúpula de Credenciamento 1970) -->
+  <div class="setup-screen hidden" id="playerSetupScreen">
+    
+    <!-- Static Vignette Frame for Setup Screen -->
+    <div class="film-vignette"></div>
+
+    <!-- Setup Screen Header -->
+    <header class="setup-header">
+      <div class="setup-badge">CONFERÊNCIA INTERNACIONAL 1970</div>
+      <h1 class="setup-title">CREDENCIAMENTO DAS NAÇÕES PARTICIPANTES</h1>
+      <p class="setup-subtitle">Selecione o número de líderes mundiais e configure a diplomacia energética de cada nação.</p>
+    </header>
+
+    <!-- Player Count Selection Bar -->
+    <section class="player-count-selector">
+      <span class="count-label">NÚMERO DE NAÇÕES NA CÚPULA:</span>
+      <div class="count-buttons" id="countButtonsGroup">
+        <button class="btn-count" data-count="2">2 NAÇÕES</button>
+        <button class="btn-count active" data-count="3">3 NAÇÕES</button>
+        <button class="btn-count" data-count="4">4 NAÇÕES</button>
+        <button class="btn-count" data-count="5">5 NAÇÕES</button>
+      </div>
+    </section>
+
+    <!-- Player Slots Grid -->
+    <main class="player-slots-container" id="playerSlotsContainer">
+      <!-- Cards de jogadores renderizados dinamicamente via JavaScript -->
+    </main>
+
+    <!-- Setup Action Footer -->
+    <footer class="setup-footer">
+      <button class="btn-setup-action secondary" id="btnBackToIntro">
+        <span class="btn-icon">⏮</span>
+        <span class="btn-text">VOLTAR AO CINEJORNAL</span>
+      </button>
+      <button class="btn-setup-action primary" id="btnConfirmSetup" onclick="window.initMainGame && window.initMainGame()">
+        <span class="btn-icon">⚡</span>
+        <span class="btn-text">INICIAR CÚPULA ENERGÉTICA (1970)</span>
+      </button>
+    </footer>
+
+  </div>
+
+  <!-- Main Game Stage Screen (Plenário do Conselho Internacional de Energia 1970-2020) -->
+  <div class="game-stage-screen hidden" id="gameStageScreen">
+    
+    <!-- Vintage Film Overlays for Main Stage -->
+    <div class="film-vignette"></div>
+    <div class="film-grain-overlay"></div>
+
+    <!-- Main Game Top Header Bar -->
+    <header class="game-header-bar">
+      <div class="header-left">
+        <div class="year-badge" id="hudYearBadge">1970 (TURNO 1/50)</div>
+        <div class="phase-badge" id="hudPhaseBadge">FASE 1: REVELAÇÃO DE EVENTOS</div>
+      </div>
+      
+      <div class="header-center">
+        <h2 class="game-title-sm">GEOPOWER • CÚPULA MUNDIAL</h2>
+      </div>
+
+      <div class="header-right">
+        <!-- Global Ecological Footprint Meter -->
+        <div class="global-footprint-box" title="Pegada Ecológica Global (Emissões de Carbono Acc. de todas as nações)">
+          <span class="footprint-label">🌱 PEGADA GLOBAL:</span>
+          <div class="footprint-bar"><div class="footprint-fill" id="hudFootprintFill" style="width: 5%;"></div></div>
+          <span class="footprint-value" id="hudFootprintVal">25 / 1500 PTS</span>
+        </div>
+
+        <button class="btn-control toggle-active" id="btnStageSoundToggle" title="Alternar Som">🔊</button>
+      </div>
+    </header>
+
+    <!-- Main Plenary Council Stage Container -->
+    <main class="council-plenary-viewport">
+      
+      <!-- Plenary Stage Backdrop Image Container -->
+      <div class="plenary-backdrop-wrapper">
+        <img src="assets/game_stage.jpg" alt="Plenário do Conselho Internacional de Energia" class="plenary-bg-img">
+        <div class="backdrop-noir-overlay"></div>
+      </div>
+
+      <!-- Leaders Seated Around Council Table -->
+      <div class="council-seats-grid" id="councilSeatsGrid">
+        <!-- 2 a 5 lideres renderizados e posicionados dinamicamente via JS -->
+      </div>
+
+      <!-- Decision Typewriter Panel / Speech Bubble overlay for active leader -->
+      <aside class="decision-panel-box" id="decisionPanelBox">
+        <header class="decision-panel-header">
+          <div class="panel-header-left">
+            <span class="decision-badge" id="decisionBadge">TELEGRAMA DIPLOMÁTICO 1970</span>
+            <span class="active-leader-tag" id="activeLeaderTag">LÍDER DA RODADA: 🇳🇴 NORUEGA</span>
+          </div>
+          <div class="panel-header-right">
+            <span class="confidential-stamp">CONFIDENCIAL</span>
+          </div>
+        </header>
+
+        <!-- Executive Statistics CRT Dashboard (Dados Estatísticos em Destaque) -->
+        <section class="executive-stats-dashboard" id="executiveStatsDashboard">
+          <!-- Renderizado dinamicamente via JS com 4 cards de métricas estratégicas em tempo real -->
+        </section>
+
+        <div class="decision-panel-grid">
+          <!-- Left Column: Story Narrative / Dispatch -->
+          <div class="narrative-column">
+            <h3 class="decision-title" id="decisionTitle">1970: A EXPLOSÃO DO CONSUMO INDUSTRIAL</h3>
+            <p class="decision-description" id="decisionDescription">
+              As fábricas operam em capacidade máxima e a demanda por energia cresce a um ritmo vertiginoso. Defina o investimento prioritário inicial da sua nação.
+            </p>
+          </div>
+
+          <!-- Right Column: Interactive Choice Cards -->
+          <div class="choices-column">
+            <div class="action-options-container" id="actionOptionsContainer">
+              <!-- Cards de escolha gerados dinamicamente via JS -->
+            </div>
+          </div>
+        </div>
+
+        <footer class="decision-panel-footer">
+          <div class="active-nation-stats-bar" id="activeNationStatsBar">
+            <!-- Estatisticas em pílulas retrô (Confiança 👑, Capital 💰, Geração ⚡, Demanda 📈, PIB 🏛️) -->
+          </div>
+        </footer>
+      </aside>
+
+    </main>
+
+    <!-- Bottom Status Log & Timeline Bar -->
+    <footer class="game-footer-bar">
+      <div class="ticker-box">
+        <span class="ticker-label">📰 CINEJORNAL DISPATCH:</span>
+        <marquee class="ticker-text" id="newsTickerText">1970 • Início da corrida pela hegemonia energética mundial na Cúpula de Genebra...</marquee>
+      </div>
+    </footer>
+  </div>
+
+  <!-- Game Tutorial & Briefing Modal Overlay -->
+  <div class="tutorial-modal-overlay hidden" id="gameTutorialModal">
+    <div class="tutorial-card">
+      <header class="tutorial-card-header">
+        <span class="tutorial-badge">CONSELHO INTERNACIONAL DE ENERGIA</span>
+        <h2 class="tutorial-title">📜 MANUAL DO LÍDER & REGRAS DO JOGO</h2>
+        <p class="tutorial-subtitle">Leia com atenção as 5 diretrizes da diplomacia energética antes de assumir a bancada de votação.</p>
+      </header>
+
+      <main class="tutorial-body-content">
+        
+        <div class="tutorial-rule-box">
+          <div class="rule-icon">⏳</div>
+          <div class="rule-text-box">
+            <h4 class="rule-heading">1. A CORRIDA DE 50 ANOS (1970 – 2020)</h4>
+            <p class="rule-desc">O jogo possui 50 turnos diretos. A cada turno (1 ano), o holofote de teatro ilumina o líder da rodada para responder a um dilema geopolítico.</p>
+          </div>
+        </div>
+
+        <div class="tutorial-rule-box">
+          <div class="rule-icon">⚡</div>
+          <div class="rule-text-box">
+            <h4 class="rule-heading">2. BALANÇO ENERGÉTICO (GERAÇÃO vs DEMANDA)</h4>
+            <p class="rule-desc">Garanta que sua geração em MW cubra a demanda industrial. Superávit gera bônus fiscal (+$30M); apagões causam retração no PIB e crise social.</p>
+          </div>
+        </div>
+
+        <div class="tutorial-rule-box">
+          <div class="rule-icon">👑</div>
+          <div class="rule-text-box">
+            <h4 class="rule-heading">3. CONFIANÇA DO GOVERNO (AÇÕES & GREVES)</h4>
+            <p class="rule-desc">Aprovação alta (≥ 75%) dá +20% em impostos. Aprovação baixa (&lt; 40%) causa greves que inflam custos em +35%. Se atingir 0%, ocorre Impeachment!</p>
+          </div>
+        </div>
+
+        <div class="tutorial-rule-box">
+          <div class="rule-icon">💰</div>
+          <div class="rule-text-box">
+            <h4 class="rule-heading">4. RESTRIÇÃO ORÇAMENTÁRIA DE CAPITAL</h4>
+            <p class="rule-desc">Cada escolha consome capital. Opções mais caras que o seu orçamento serão bloqueadas. Escolha medidas de arrecadação se necessário.</p>
+          </div>
+        </div>
+
+        <div class="tutorial-rule-box">
+          <div class="rule-icon">🏆</div>
+          <div class="rule-text-box">
+            <h4 class="rule-heading">5. VITÓRIA NO PÓDIO DE 2020</h4>
+            <p class="rule-desc">No ano 2020, o Score de Resiliência (35% PIB + 30% Confiança + 20% Patentes - 15% Emissões) determinará a nação campeã mundial!</p>
+          </div>
+        </div>
+
+      </main>
+
+      <footer class="tutorial-card-footer">
+        <button class="btn-retro-cta primary" id="btnStartGameFromTutorial" onclick="window.confirmTutorialAndStartStage && window.confirmTutorialAndStartStage()">
+          <span class="btn-icon">🏛️</span>
+          <span class="btn-text">ENTENDI! IR PARA O PLENÁRIO DO CONSELHO</span>
+        </button>
+      </footer>
+  </div>
+
+  <!-- Breaking News Newspaper Modal Overlay (Jornal Extraordinário no Meio da Tela) -->
+  <div class="newspaper-modal-overlay hidden" id="retroNewspaperModal">
+    <div class="newspaper-card">
+      
+      <!-- Vintage Newspaper Header / Masthead -->
+      <header class="newspaper-header">
+        <div class="newspaper-top-meta">
+          <span>EDIÇÃO N° <span id="newspaperIssueNum">1974</span></span>
+          <h2 class="newspaper-masthead-title">GAZETA GEOPOLÍTICA</h2>
+          <span>PREÇO: 5 CENTS</span>
+        </div>
+        <div class="newspaper-divider-thick"></div>
+        <div class="newspaper-sub-meta">
+          <span id="newspaperDateTag">GENEVRA • 15 DE OUTUBRO DE 1974</span>
+          <span>EDIÇÃO EXTRAORDINÁRIA DE ÚLTIMA HORA</span>
+          <span>CÚPULA MUNDIAL</span>
+        </div>
+        <div class="newspaper-divider-thin"></div>
+      </header>
+
+      <!-- Main Headline & Body -->
+      <main class="newspaper-body">
+        <div class="newspaper-badge-extra" id="newspaperCategoryBadge">🚨 NOTÍCIA URGENTE DE CÚPULA</div>
+        <h1 class="newspaper-headline" id="newspaperHeadlineTitle">BARRAGEM HIDRELÉTRICA ATINGE MARCA HISTÓRICA DE GERAÇÃO!</h1>
+        <h3 class="newspaper-subheadline" id="newspaperSubheadline">Investimentos maciços em energia renovável transformam o mercado internacional.</h3>
+        
+        <div class="newspaper-content-grid">
+          <div class="newspaper-photo-box">
+            <div class="newspaper-photo-frame" id="newspaperPhotoFrame">
+              <span class="photo-icon" id="newspaperPhotoIcon">⚡</span>
+            </div>
+            <div class="photo-caption" id="newspaperPhotoCaption">Foto transmitida via telégrafo da central geradora em operação.</div>
+          </div>
+
+          <div class="newspaper-text-column">
+            <p class="newspaper-paragraph" id="newspaperParagraphText">
+              Relatórios confidenciais apresentados esta manhã no plenário de Genevra confirmam alterações expressivas no mercado de combustíveis e commodities. Governantes e ministros das nações participantes recalibram estratégias de desenvolvimento para evitar estrangulamentos econômicos.
+            </p>
+            <div class="newspaper-impact-pill" id="newspaperImpactPill">
+              ⚡ Impacto no Turno: +$15M no mercado global & Bônus de Estabilidade
+            </div>
+          </div>
+        </div>
+      </main>
+
+      <!-- Vintage Newspaper Footer Button -->
+      <footer class="newspaper-footer">
+        <button class="btn-newspaper-close" id="btnCloseNewspaper" onclick="window.closeNewspaperModal && window.closeNewspaperModal()">
+          🗞️ CIENTE! CONTINUAR O COMANDO DA CÚPULA ➔
+        </button>
+      </footer>
+
+    </div>
+  </div>
+
+  <!-- End-of-Game Victory / Defeat Screen Overlay -->
+  <div class="endgame-screen-overlay hidden" id="endgameScreen">
+    
+    <!-- Animated Background Particles / Spotlight Beams -->
+    <div class="endgame-bg-effects" id="endgameBgEffects">
+      <div class="victory-confetti-container" id="confettiContainer"></div>
+      <div class="spotlight-rotate-beam left"></div>
+      <div class="spotlight-rotate-beam right"></div>
+    </div>
+
+    <!-- Main Endgame Card Container -->
+    <div class="endgame-card" id="endgameCard">
+      
+      <!-- Header Badge & Status Title -->
+      <header class="endgame-card-header">
+        <span class="endgame-badge" id="endgameBadge">RESULTADO FINAL • CÚPULA DE GENEBRA (2020)</span>
+        <div class="endgame-headline-box">
+          <span class="endgame-icon-hero" id="endgameIconHero">🏆</span>
+          <h1 class="endgame-title" id="endgameTitle">VITÓRIA HISTÓRICA!</h1>
+        </div>
+        <p class="endgame-subtitle" id="endgameSubtitle">
+          Sua nação liderou a maior transição energética da história da humanidade de 1970 a 2020!
+        </p>
+      </header>
+
+      <!-- Podium / Final Ranking Leaderboards -->
+      <div class="endgame-body-grid">
+        
+        <!-- Winner Champion Highlight Card -->
+        <div class="champion-spotlight-card" id="championSpotlightCard">
+          <div class="champion-crown" id="championCrownLabel">👑 CAMPEÃO MUNDIAL</div>
+          <div class="champion-avatar-box" id="championAvatarBox">
+            <span class="champion-flag" id="championFlag">🇳🇴</span>
+            <span class="champion-avatar-icon" id="championAvatarIcon">🧔🏻‍♂️</span>
+          </div>
+          <h2 class="champion-name" id="championName">LÍDER NORUEGA</h2>
+          <span class="champion-nation-title" id="championNationTitle">NORUEGA • PIONEIRA LIMPA</span>
+          
+          <div class="champion-stats-grid">
+            <div class="champ-stat-pill">
+              <span class="champ-stat-lbl">SCORE DE RESILIÊNCIA</span>
+              <span class="champ-stat-val" id="champResilienceVal">94.5 PTS</span>
+            </div>
+            <div class="champ-stat-pill">
+              <span class="champ-stat-lbl">CONFIANÇA FINAL</span>
+              <span class="champ-stat-val" id="champTrustVal">92%</span>
+            </div>
+            <div class="champ-stat-pill">
+              <span class="champ-stat-lbl">PIB ACUMULADO</span>
+              <span class="champ-stat-val" id="champGdpVal">$1.42T</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Full Ranking Table (2nd to 5th place) -->
+        <div class="ranking-leaderboard-box">
+          <h3 class="leaderboard-title">CLASSIFICAÇÃO GERAL DE RESILIÊNCIA ENERGÉTICA</h3>
+          <div class="leaderboard-list" id="leaderboardList">
+            <!-- Rendered dynamically in JS -->
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Action Footer: Créditos de Desenvolvimento & Reiniciar Jogo -->
+      <footer class="endgame-footer">
+        <button class="btn-endgame-action primary" id="btnCredits" onclick="window.showMovieCredits && window.showMovieCredits()">
+          <span class="btn-icon">🎬</span>
+          <span class="btn-text">CRÉDITOS DE DESENVOLVIMENTO</span>
+        </button>
+        <button class="btn-endgame-action secondary" id="btnRestartSetup" onclick="window.restartGameSetup && window.restartGameSetup()">
+          <span class="btn-icon">🔄</span>
+          <span class="btn-text">REINICIAR CÚPULA ENERGÉTICA</span>
+        </button>
+      </footer>
+
+    </div>
+
+  </div>
+
+  <!-- Movie Credits Scrolling Overlay (Estilo Filme de Cinema 1970) -->
+  <div class="movie-credits-overlay hidden" id="movieCreditsOverlay">
+    
+    <div class="film-vignette"></div>
+    <div class="film-scratches"></div>
+    <div class="film-grain-overlay"></div>
+
+    <div class="credits-toolbar">
+      <button class="btn-credits-action secondary" id="btnRestartFromCredits" onclick="window.restartGameSetup && window.restartGameSetup()">
+        🔄 REINICIAR JOGO
+      </button>
+      <button class="btn-credits-action primary" id="btnCloseCredits" onclick="window.hideMovieCredits && window.hideMovieCredits()">
+        ✖ FECHAR CRÉDITOS
+      </button>
+    </div>
+
+    <div class="movie-credits-stage">
+      <div class="movie-credits-roll" id="movieCreditsRoll">
+        
+        <div class="credits-logo">GEOPOWER</div>
+        <div class="credits-subtitle">CÚPULA INTERNACIONAL DE ENERGIA (1970 – 2020)</div>
+        <div class="credits-divider">✦ ✦ ✦</div>
+
+        <div class="credits-section">
+          <h2 class="credits-section-title">EQUIPE DE DESENVOLVIMENTO</h2>
+          <ul class="credits-names-list">
+            <li class="credits-name-item">
+              <span class="credits-name">Ana Clara Pantaleao Tirola</span>
+              <span class="credits-number">Nº 02</span>
+            </li>
+            <li class="credits-name-item">
+              <span class="credits-name">Ana Laura Pessotto Camargo</span>
+              <span class="credits-number">Nº 03</span>
+            </li>
+            <li class="credits-name-item">
+              <span class="credits-name">Lorena Santos Leme</span>
+              <span class="credits-number">Nº 23</span>
+            </li>
+            <li class="credits-name-item">
+              <span class="credits-name">Maria Clara De Núncio Oliveira</span>
+              <span class="credits-number">Nº 25</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="credits-divider">✦ ✦ ✦</div>
+
+        <div class="credits-section">
+          <h2 class="credits-section-title">DISCIPLINA & PROJETO</h2>
+          <p class="credits-text">Projeto de Física Aplicada & Geopolítica Energética</p>
+          <p class="credits-text">Matriz Elétrica, Estabilidade Social e Desenvolvimento Sustentável</p>
+        </div>
+
+        <div class="credits-divider">✦ ✦ ✦</div>
+
+        <div class="credits-section">
+          <h2 class="credits-section-title">TECNOLOGIAS & ESTÉTICA</h2>
+          <p class="credits-text">1970s Rubber Hose Cartoon Aesthetic</p>
+          <p class="credits-text">Cinejornal Vintage & Síntese de Áudio Analógico</p>
+        </div>
+
+        <div class="credits-divider">✦ ✦ ✦</div>
+
+        <div class="credits-footer-end">
+          <div class="credits-the-end">FIM DA CÚPULA</div>
+          <div class="credits-copyright">© 2026 GEOPOWER • TODOS OS DIREITOS RESERVADOS</div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,2607 @@
+/* ==========================================================================
+   GEOPOWER 1970s RETRO NEWSREEL CINEMA INTRO - STYLESHEET
+   Aesthetic: 1970s Rubber-Hose Vintage Newsreel / B&W High-Contrast Cinema
+   ========================================================================== */
+
+/* CSS Variables */
+:root {
+  --bg-dark: #090909;
+  --bg-darker: #020202;
+  --text-light: #f4f0e6;
+  --text-muted: #a8a298;
+  --accent-gold: #d4af37;
+  --accent-light: #fff8e7;
+  --border-sepia: #4a453b;
+  --overlay-vignette: rgba(0, 0, 0, 0.85);
+  --font-newsreel: 'Special Elite', 'Courier Prime', monospace;
+  --font-title: 'Cinzel', serif;
+}
+
+/* Reset & Global */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  background-color: var(--bg-darker);
+  color: var(--text-light);
+  font-family: var(--font-newsreel);
+  overflow: hidden;
+  user-select: none;
+}
+
+/* ==========================================================================
+   Retro Intro Screen Wrapper with Grayscale & Flicker Filters
+   ========================================================================== */
+.retro-intro-screen {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #0d0d0d;
+  filter: grayscale(100%) contrast(125%) brightness(95%);
+  animation: flicker 0.15s infinite alternate;
+  overflow: hidden;
+}
+
+/* Flicker Animation for 1970s Projector Bulb Simulation */
+@keyframes flicker {
+  0% {
+    opacity: 0.97;
+    filter: grayscale(100%) contrast(124%) brightness(94%);
+  }
+  50% {
+    opacity: 1;
+    filter: grayscale(100%) contrast(127%) brightness(97%);
+  }
+  100% {
+    opacity: 0.95;
+    filter: grayscale(100%) contrast(122%) brightness(93%);
+  }
+}
+
+/* Film Grain Overlay Generated via CSS Radial/Halftone Patterns */
+.film-grain-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 10;
+  opacity: 0.18;
+  background-image: 
+    radial-gradient(#ffffff 1px, transparent 0),
+    radial-gradient(#000000 1px, transparent 0);
+  background-size: 4px 4px, 3px 3px;
+  background-position: 0 0, 2px 2px;
+  animation: grainShift 0.08s steps(4) infinite;
+}
+
+@keyframes grainShift {
+  0% { transform: translate(0, 0); }
+  25% { transform: translate(-2px, 1px); }
+  50% { transform: translate(1px, -1px); }
+  75% { transform: translate(-1px, -2px); }
+  100% { transform: translate(2px, 2px); }
+}
+
+/* Vignette Dark Shadow Frame */
+.film-vignette {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 11;
+  background: radial-gradient(circle at center, transparent 40%, rgba(0, 0, 0, 0.92) 90%);
+  box-shadow: inset 0 0 100px #000;
+}
+
+/* Vertical Dust & Film Scratch Line Effect */
+.film-scratches {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 12;
+  opacity: 0.12;
+  background: repeating-linear-gradient(
+    90deg,
+    transparent,
+    transparent 180px,
+    rgba(255, 255, 255, 0.4) 181px,
+    transparent 182px,
+    transparent 360px
+  );
+  animation: scratchJitter 0.3s infinite;
+}
+
+@keyframes scratchJitter {
+  0% { transform: translateX(0); opacity: 0.08; }
+  50% { transform: translateX(35px); opacity: 0.15; }
+  100% { transform: translateX(-20px); opacity: 0.05; }
+}
+
+/* Projector Beam Flicker Effect */
+.projector-light-beam {
+  position: absolute;
+  top: -50%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 120vw;
+  height: 120vh;
+  pointer-events: none;
+  z-index: 2;
+  background: radial-gradient(ellipse at top, rgba(255, 255, 255, 0.06) 0%, transparent 70%);
+}
+
+/* ==========================================================================
+   Cinejornal Header
+   ========================================================================== */
+.newsreel-header {
+  position: relative;
+  z-index: 20;
+  width: 100%;
+  padding: 12px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: linear-gradient(180deg, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.6) 100%);
+  border-bottom: 2px solid var(--border-sepia);
+  letter-spacing: 2px;
+}
+
+.newsreel-badge {
+  background-color: var(--text-light);
+  color: var(--bg-darker);
+  font-family: var(--font-title);
+  font-weight: 900;
+  font-size: 0.8rem;
+  padding: 3px 8px;
+  border-radius: 2px;
+}
+
+.newsreel-title {
+  font-family: var(--font-title);
+  font-size: 1.4rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  text-shadow: 2px 2px 4px #000;
+  text-align: center;
+}
+
+.newsreel-date {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+/* ==========================================================================
+   Projector Viewport & Sprocket Hole Cinema Frame
+   ========================================================================== */
+.projector-viewport-wrapper {
+  position: relative;
+  z-index: 15;
+  flex: 1;
+  width: 100%;
+  max-width: 1280px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 20px;
+}
+
+/* Film Strip Sprocket Holes */
+.sprocket-strip {
+  width: 40px;
+  height: 90%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  background-color: #000;
+  border: 1px solid #222;
+}
+
+.sprocket-hole {
+  width: 22px;
+  height: 32px;
+  background-color: #1a1a1a;
+  border-radius: 4px;
+  border: 2px solid #080808;
+  box-shadow: inset 0 0 6px #000;
+}
+
+.sprocket-left {
+  margin-right: 15px;
+}
+
+.sprocket-right {
+  margin-left: 15px;
+}
+
+/* Projector Screen Frame (16:9 Aspect Ratio) */
+.projector-screen {
+  position: relative;
+  flex: 1;
+  aspect-ratio: 16 / 9;
+  max-height: 72vh;
+  background-color: #000;
+  border: 8px solid #1c1c1c;
+  outline: 2px solid var(--border-sepia);
+  border-radius: 6px;
+  box-shadow: 0 0 40px rgba(0, 0, 0, 0.9);
+  overflow: hidden;
+}
+
+/* ==========================================================================
+   Newsreel Scenes & Transitions
+   ========================================================================== */
+.newsreel-scene {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  visibility: hidden;
+  transform: scale(1.03);
+  transition: opacity 0.8s ease-in-out, transform 0.8s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.newsreel-scene.active {
+  opacity: 1;
+  visibility: visible;
+  transform: scale(1);
+}
+
+.scene-image-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.scene-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(100%) contrast(130%) brightness(92%);
+}
+
+.scene-stamp {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  background: rgba(0, 0, 0, 0.85);
+  border: 1px solid var(--text-light);
+  color: var(--text-light);
+  padding: 6px 14px;
+  font-family: var(--font-title);
+  font-size: 0.85rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+/* Subtitle & Narration Typewriter Caption Box */
+.scene-caption-box {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 20px 30px;
+  background: linear-gradient(0deg, rgba(0,0,0,0.98) 0%, rgba(0,0,0,0.85) 75%, transparent 100%);
+  border-top: 2px dashed var(--border-sepia);
+}
+
+.scene-heading {
+  font-family: var(--font-title);
+  font-size: 1.15rem;
+  color: var(--accent-gold);
+  margin-bottom: 8px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.scene-narration {
+  font-family: var(--font-newsreel);
+  font-size: 1.1rem;
+  line-height: 1.5;
+  color: var(--text-light);
+  min-height: 3em;
+  text-shadow: 1px 1px 3px #000;
+}
+
+/* ==========================================================================
+   Start Prompt Overlay (Ligar Projetor & Som no Início)
+   ========================================================================== */
+.start-prompt-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 100;
+  background: rgba(0, 0, 0, 0.88);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease-in-out;
+}
+
+.start-prompt-overlay.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.start-prompt-card {
+  background: #111111;
+  border: 3px double var(--text-light);
+  padding: 36px 48px;
+  max-width: 520px;
+  text-align: center;
+  box-shadow: 0 0 50px rgba(0, 0, 0, 0.95);
+  animation: cardPop 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.start-prompt-badge {
+  font-family: var(--font-title);
+  font-size: 0.85rem;
+  letter-spacing: 3px;
+  color: var(--accent-gold);
+  margin-bottom: 10px;
+}
+
+.start-prompt-title {
+  font-family: var(--font-title);
+  font-size: 1.5rem;
+  color: var(--text-light);
+  margin-bottom: 12px;
+  letter-spacing: 2px;
+}
+
+.start-prompt-text {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  margin-bottom: 24px;
+  line-height: 1.4;
+}
+
+/* ==========================================================================
+   Call To Action Overlay
+   ========================================================================== */
+.cta-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 50;
+  background: rgba(0, 0, 0, 0.88);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.6s ease-in-out;
+}
+
+.cta-overlay.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.cta-card {
+  background: #121212;
+  border: 3px double var(--text-light);
+  padding: 36px 48px;
+  max-width: 580px;
+  text-align: center;
+  box-shadow: 0 0 50px rgba(0, 0, 0, 0.95);
+  animation: cardPop 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes cardPop {
+  0% { transform: scale(0.8); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+.cta-badge {
+  font-family: var(--font-title);
+  font-size: 0.85rem;
+  letter-spacing: 3px;
+  color: var(--text-muted);
+  margin-bottom: 10px;
+}
+
+.cta-title {
+  font-family: var(--font-title);
+  font-size: 1.6rem;
+  color: var(--text-light);
+  margin-bottom: 12px;
+  letter-spacing: 2px;
+}
+
+.cta-subtitle {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  margin-bottom: 28px;
+  line-height: 1.4;
+}
+
+.btn-retro-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  background-color: var(--text-light);
+  color: var(--bg-darker);
+  border: 2px solid var(--text-light);
+  padding: 14px 28px;
+  font-family: var(--font-title);
+  font-size: 1.05rem;
+  font-weight: 900;
+  letter-spacing: 2px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 4px 4px 0 #000;
+}
+
+.btn-retro-cta:hover {
+  background-color: #ffffff;
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0 #000;
+}
+
+.btn-retro-cta:active {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0 #000;
+}
+
+/* ==========================================================================
+   Newsreel Footer Controls
+   ========================================================================== */
+.newsreel-controls {
+  position: relative;
+  z-index: 20;
+  width: 100%;
+  background: rgba(5, 5, 5, 0.95);
+  border-top: 2px solid var(--border-sepia);
+  padding: 12px 24px;
+}
+
+.progress-bar-container {
+  width: 100%;
+  height: 4px;
+  background-color: #222;
+  margin-bottom: 12px;
+  overflow: hidden;
+}
+
+.progress-bar-fill {
+  width: 0%;
+  height: 100%;
+  background-color: var(--text-light);
+  transition: width 0.1s linear;
+}
+
+.controls-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.scene-indicator {
+  display: flex;
+  gap: 8px;
+}
+
+.scene-pill {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1px solid var(--border-sepia);
+  background-color: #121212;
+  color: var(--text-muted);
+  font-family: var(--font-title);
+  font-size: 0.85rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.scene-pill:hover {
+  border-color: var(--text-light);
+  color: var(--text-light);
+}
+
+.scene-pill.active {
+  background-color: var(--text-light);
+  color: var(--bg-darker);
+  border-color: var(--text-light);
+  font-weight: 900;
+}
+
+.playback-buttons, .audio-controls {
+  display: flex;
+  gap: 10px;
+}
+
+.btn-control {
+  background-color: #1a1a1a;
+  color: var(--text-light);
+  border: 1px solid var(--border-sepia);
+  padding: 8px 16px;
+  font-family: var(--font-newsreel);
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-control:hover {
+  background-color: #2a2a2a;
+  border-color: var(--text-light);
+}
+
+.btn-control.primary {
+  background-color: #333;
+  font-weight: bold;
+}
+
+.btn-control.toggle-active {
+  background-color: #2b261b;
+  border-color: var(--accent-gold);
+  color: var(--accent-light);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .newsreel-header {
+    flex-direction: column;
+    gap: 6px;
+    text-align: center;
+  }
+  .newsreel-title {
+    font-size: 1rem;
+  }
+  .sprocket-strip {
+    display: none;
+  }
+  .controls-toolbar {
+    flex-direction: column;
+    align-items: center;
+  }
+  .scene-caption-box {
+    padding: 12px 16px;
+  }
+  .scene-narration {
+    font-size: 0.9rem;
+  }
+}
+
+/* Helper hidden class */
+.hidden {
+  display: none !important;
+}
+
+/* ==========================================================================
+   Player Setup Screen (Credenciamento de Líderes 1970)
+   ========================================================================== */
+.setup-screen {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #0a0a0a;
+  color: var(--text-light);
+  overflow-y: auto;
+  padding: 20px;
+  z-index: 50;
+  animation: setupFade 0.4s ease-out;
+}
+
+@keyframes setupFade {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.setup-header {
+  text-align: center;
+  margin-bottom: 20px;
+  max-width: 850px;
+}
+
+.setup-badge {
+  display: inline-block;
+  background-color: var(--accent-gold);
+  color: #000;
+  font-family: var(--font-title);
+  font-weight: 900;
+  font-size: 0.8rem;
+  padding: 4px 12px;
+  letter-spacing: 3px;
+  margin-bottom: 8px;
+  border-radius: 2px;
+}
+
+.setup-title {
+  font-family: var(--font-title);
+  font-size: 1.8rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--text-light);
+  margin-bottom: 6px;
+  text-shadow: 2px 2px 4px #000;
+}
+
+.setup-subtitle {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+}
+
+/* Player Count Selector */
+.player-count-selector {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  background: #141414;
+  border: 1px solid var(--border-sepia);
+  padding: 10px 20px;
+  margin-bottom: 25px;
+  border-radius: 4px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
+}
+
+.count-label {
+  font-family: var(--font-title);
+  font-size: 0.85rem;
+  letter-spacing: 2px;
+  color: var(--accent-gold);
+}
+
+.count-buttons {
+  display: flex;
+  gap: 8px;
+}
+
+.btn-count {
+  background: #1e1e1e;
+  border: 1px solid var(--border-sepia);
+  color: var(--text-muted);
+  padding: 6px 14px;
+  font-family: var(--font-newsreel);
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-count:hover {
+  border-color: var(--text-light);
+  color: var(--text-light);
+}
+
+.btn-count.active {
+  background: var(--text-light);
+  color: var(--bg-darker);
+  border-color: var(--text-light);
+  font-weight: bold;
+}
+
+/* Player Slots Container Grid */
+.player-slots-container {
+  width: 100%;
+  max-width: 1380px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 22px;
+  margin-bottom: 25px;
+}
+
+/* Player Slot Credential Card */
+.player-card {
+  background: #131313;
+  border: 2px solid var(--border-sepia);
+  border-radius: 6px;
+  padding: 20px;
+  box-shadow: 5px 5px 0 #000;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.player-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--text-light);
+}
+
+.player-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px dashed var(--border-sepia);
+  padding-bottom: 10px;
+}
+
+.player-badge {
+  font-family: var(--font-title);
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: var(--accent-gold);
+}
+
+.controller-toggle {
+  display: flex;
+  gap: 4px;
+}
+
+.btn-toggle-type {
+  background: #202020;
+  border: 1px solid var(--border-sepia);
+  color: var(--text-muted);
+  font-size: 0.75rem;
+  padding: 4px 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-toggle-type.active {
+  background: #333;
+  color: #fff;
+  border-color: var(--text-light);
+  font-weight: bold;
+}
+
+.player-input-group, .nation-select-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.input-label {
+  font-size: 0.75rem;
+  letter-spacing: 1px;
+  color: var(--text-muted);
+  font-family: var(--font-title);
+}
+
+.player-name-input {
+  background: #090909;
+  border: 1px solid var(--border-sepia);
+  color: var(--text-light);
+  padding: 8px 12px;
+  font-family: var(--font-newsreel);
+  font-size: 0.95rem;
+  outline: none;
+  transition: border-color 0.2s ease;
+}
+
+.player-name-input:focus {
+  border-color: var(--accent-gold);
+}
+
+.nation-select-dropdown {
+  background: #090909;
+  border: 1px solid var(--border-sepia);
+  color: var(--text-light);
+  padding: 10px 12px;
+  font-family: var(--font-newsreel);
+  font-size: 0.9rem;
+  outline: none;
+  cursor: pointer;
+  transition: border-color 0.2s ease;
+}
+
+.nation-select-dropdown:focus {
+  border-color: var(--text-light);
+}
+
+/* Nation Details Inside Card */
+.nation-details-card {
+  background: #0c0c0c;
+  border: 1px solid #222;
+  border-radius: 4px;
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.nation-card-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.nation-flag-icon {
+  font-size: 2.2rem;
+  line-height: 1;
+}
+
+.nation-title-box {
+  display: flex;
+  flex-direction: column;
+}
+
+.nation-name {
+  font-family: var(--font-title);
+  font-size: 1.1rem;
+  letter-spacing: 2px;
+  color: var(--text-light);
+}
+
+.nation-tagline {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  line-height: 1.2;
+}
+
+/* Energy Matrix Stats Grid */
+.matrix-stats-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.matrix-stat-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.75rem;
+}
+
+.stat-label {
+  width: 120px;
+  color: var(--text-muted);
+  font-size: 0.72rem;
+  white-space: nowrap;
+}
+
+.stat-bar {
+  flex: 1;
+  height: 6px;
+  background: #222;
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.stat-bar-fill {
+  height: 100%;
+  background: var(--text-light);
+  transition: width 0.3s ease;
+}
+
+.stat-value {
+  width: 32px;
+  text-align: right;
+  font-weight: bold;
+  color: var(--accent-gold);
+}
+
+/* Vulnerability Notice Box */
+.vulnerability-box {
+  background: #18140c;
+  border: 1px dashed var(--accent-gold);
+  padding: 10px;
+  border-radius: 3px;
+  font-size: 0.78rem;
+  line-height: 1.3;
+}
+
+.vulnerability-title {
+  display: block;
+  color: var(--accent-gold);
+  margin-bottom: 4px;
+  font-family: var(--font-title);
+  font-size: 0.75rem;
+  letter-spacing: 1px;
+}
+
+.vulnerability-text {
+  color: var(--text-light);
+}
+
+/* Setup Footer Action Buttons */
+.setup-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 1380px;
+  padding-top: 15px;
+  border-top: 2px solid var(--border-sepia);
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.btn-setup-action {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 24px;
+  font-family: var(--font-title);
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border-radius: 2px;
+}
+
+.btn-setup-action.secondary {
+  background: #1a1a1a;
+  color: var(--text-light);
+  border: 1px solid var(--border-sepia);
+}
+
+.btn-setup-action.secondary:hover {
+  background: #2a2a2a;
+  border-color: var(--text-light);
+}
+
+.btn-setup-action.primary {
+  background: var(--text-light);
+  color: var(--bg-darker);
+  border: 2px solid var(--text-light);
+  box-shadow: 4px 4px 0 #000;
+}
+
+/* ==========================================================================
+   Main Game Stage Screen (Plenário do Conselho Internacional de Energia)
+   ========================================================================== */
+.game-stage-screen {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: #030303;
+  color: var(--text-light);
+  overflow: hidden;
+  z-index: 60;
+  animation: setupFade 0.5s ease-out;
+}
+
+/* Header Top Bar */
+.game-header-bar {
+  position: relative;
+  z-index: 30;
+  width: 100%;
+  padding: 10px 24px;
+  background: linear-gradient(180deg, rgba(0,0,0,0.98) 0%, rgba(0,0,0,0.8) 100%);
+  border-bottom: 2px solid var(--border-sepia);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header-left, .header-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.year-badge {
+  background-color: var(--accent-gold);
+  color: #000;
+  font-family: var(--font-title);
+  font-weight: 900;
+  font-size: 0.85rem;
+  padding: 4px 10px;
+  letter-spacing: 2px;
+  border-radius: 2px;
+}
+
+.phase-badge {
+  background-color: #1a1a1a;
+  border: 1px solid var(--border-sepia);
+  color: var(--text-light);
+  font-family: var(--font-newsreel);
+  font-size: 0.8rem;
+  padding: 4px 10px;
+  letter-spacing: 1px;
+}
+
+.game-title-sm {
+  font-family: var(--font-title);
+  font-size: 1.2rem;
+  letter-spacing: 3px;
+  text-shadow: 2px 2px 4px #000;
+}
+
+/* Global Footprint Meter */
+.global-footprint-box {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #121212;
+  border: 1px solid var(--border-sepia);
+  padding: 4px 12px;
+  border-radius: 3px;
+}
+
+.footprint-label {
+  font-size: 0.72rem;
+  font-family: var(--font-title);
+  color: var(--accent-gold);
+  letter-spacing: 1px;
+}
+
+.footprint-bar {
+  width: 90px;
+  height: 8px;
+  background: #222;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.footprint-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #4caf50 0%, #ff9800 60%, #f44336 100%);
+  transition: width 0.4s ease;
+}
+
+.footprint-value {
+  font-size: 0.75rem;
+  font-weight: bold;
+  color: var(--text-light);
+}
+
+/* Viewport Plenário Central */
+.council-plenary-viewport {
+  position: relative;
+  flex: 1;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  overflow: hidden;
+}
+
+.plenary-backdrop-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.plenary-bg-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(100%) contrast(125%) brightness(88%);
+}
+
+.backdrop-noir-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at center 35%, transparent 30%, rgba(0, 0, 0, 0.85) 90%);
+}
+
+/* Grid de Assentos dos Líderes no Plenário */
+.council-seats-grid {
+  position: absolute;
+  top: 2%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 92%;
+  max-width: 1200px;
+  height: 38%;
+  z-index: 10;
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-end;
+}
+
+/* Slot de Líder */
+.leader-seat {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275), filter 0.5s ease, opacity 0.5s ease;
+}
+
+/* Estado Em Espera (Dimmed / Penumbra) */
+.leader-seat.dimmed {
+  filter: grayscale(85%) brightness(40%) contrast(85%);
+  opacity: 0.55;
+  transform: scale(0.82);
+  z-index: 10;
+}
+
+.leader-seat.dimmed:hover {
+  filter: grayscale(40%) brightness(70%) contrast(95%);
+  opacity: 0.8;
+}
+
+/* Estado Ativo (Spotlight / Destaque do Turno) */
+.leader-seat.active {
+  filter: grayscale(0%) brightness(120%) contrast(115%);
+  opacity: 1;
+  transform: scale(1.15) translateY(-14px);
+  z-index: 40;
+}
+
+/* Foco de Luz (Spotlight Theater Beam) */
+.spotlight-beam {
+  position: absolute;
+  top: -260px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 220px;
+  height: 380px;
+  pointer-events: none;
+  background: radial-gradient(ellipse at top, rgba(255, 248, 220, 0.55) 0%, rgba(255, 248, 220, 0.15) 50%, transparent 80%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  z-index: 5;
+}
+
+.leader-seat.active .spotlight-beam {
+  opacity: 1;
+}
+
+/* Avatar Cartoon e Placa de Nome */
+.leader-avatar-box {
+  position: relative;
+  width: 110px;
+  height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.leader-avatar-icon {
+  font-size: 4rem;
+  filter: drop-shadow(0 8px 10px #000);
+}
+
+.leader-nameplate {
+  background: #111;
+  border: 1px solid var(--border-sepia);
+  padding: 4px 10px;
+  border-radius: 3px;
+  text-align: center;
+  box-shadow: 2px 2px 0 #000;
+  margin-top: 6px;
+  white-space: nowrap;
+}
+
+.nameplate-flag {
+  font-size: 0.9rem;
+  margin-right: 4px;
+}
+
+.nameplate-title {
+  font-family: var(--font-title);
+  font-size: 0.75rem;
+  letter-spacing: 1px;
+  color: var(--text-light);
+}
+
+.leader-seat.active .nameplate-title {
+  color: var(--accent-gold);
+  font-weight: bold;
+}
+
+.nameplate-balance {
+  font-size: 0.7rem;
+  font-weight: bold;
+  margin-top: 2px;
+}
+
+.nameplate-balance.surplus { color: #4caf50; }
+.nameplate-balance.deficit { color: #f44336; }
+
+.nameplate-trust {
+  font-size: 0.68rem;
+  font-weight: bold;
+  margin-top: 1px;
+}
+
+.trust-high { color: #4caf50; }
+.trust-medium { color: #ffca28; }
+.trust-low { color: #ff9800; }
+.trust-critical { color: #f44336; animation: pulseRed 1s infinite alternate; }
+
+@keyframes pulseRed {
+  0% { opacity: 0.7; }
+  100% { opacity: 1; text-shadow: 0 0 6px #f44336; }
+}
+
+/* Painel de Decisão Retrô (Telegrama Diplomático & Cards de Escolha) */
+.decision-panel-box {
+  position: relative;
+  z-index: 30;
+  width: 95%;
+  max-width: 1200px;
+  margin-bottom: 8px;
+  background: #0d0d0d;
+  border: 2px solid var(--text-light);
+  border-radius: 6px;
+  box-shadow: 0 -8px 40px rgba(0, 0, 0, 0.95);
+  padding: 12px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  animation: panelPop 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes panelPop {
+  0% { transform: translateY(20px); opacity: 0; }
+  100% { transform: translateY(0); opacity: 1; }
+}
+
+.decision-panel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px dashed var(--border-sepia);
+  padding-bottom: 6px;
+}
+
+.panel-header-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.decision-badge {
+  font-family: var(--font-title);
+  font-size: 0.82rem;
+  letter-spacing: 2px;
+  color: var(--accent-gold);
+}
+
+.active-leader-tag {
+  background: var(--text-light);
+  color: #000;
+  font-family: var(--font-title);
+  font-weight: 900;
+  font-size: 0.78rem;
+  padding: 3px 12px;
+  letter-spacing: 1px;
+  border-radius: 2px;
+}
+
+.confidential-stamp {
+  border: 2px solid #b71c1c;
+  color: #ef5350;
+  font-family: var(--font-title);
+  font-size: 0.7rem;
+  font-weight: 900;
+  padding: 2px 8px;
+  letter-spacing: 2px;
+  transform: rotate(-3deg);
+  display: inline-block;
+}
+
+/* Executive Statistics CRT Dashboard (Dados Estatísticos em Destaque) */
+.executive-stats-dashboard {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  margin: 4px 0 6px 0;
+}
+
+@media (max-width: 900px) {
+  .executive-stats-dashboard {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.stat-card-widget {
+  background: #111111;
+  border: 1px solid var(--border-sepia);
+  border-radius: 4px;
+  padding: 6px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.8);
+  transition: all 0.2s ease;
+}
+
+.stat-card-widget:hover {
+  border-color: var(--accent-gold);
+  transform: translateY(-2px);
+}
+
+.widget-header {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.widget-icon {
+  font-size: 1.1rem;
+}
+
+.widget-title {
+  font-family: var(--font-title);
+  font-size: 0.72rem;
+  letter-spacing: 1px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+}
+
+.widget-value {
+  font-family: var(--font-title);
+  font-size: 1.35rem;
+  font-weight: 900;
+  color: var(--text-light);
+  letter-spacing: 1px;
+}
+
+.widget-sub {
+  font-family: var(--font-newsreel);
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.stat-card-widget.surplus {
+  border-left: 3px solid #4caf50;
+}
+
+.stat-card-widget.surplus .widget-value {
+  color: #81c784;
+}
+
+.stat-card-widget.deficit {
+  border-left: 3px solid #f44336;
+}
+
+.stat-card-widget.deficit .widget-value {
+  color: #ef5350;
+}
+
+.stat-card-widget.trust-high {
+  border-left: 3px solid var(--accent-gold);
+}
+
+.stat-card-widget.trust-high .widget-value {
+  color: var(--accent-gold);
+}
+
+.stat-card-widget.trust-low {
+  border-left: 3px solid #ff9800;
+}
+
+.stat-card-widget.trust-low .widget-value {
+  color: #ffb74d;
+}
+
+.stat-card-widget.trust-critical {
+  border-left: 3px solid #b71c1c;
+  animation: widgetPulse 1s infinite alternate;
+}
+
+@keyframes widgetPulse {
+  0% { box-shadow: 0 0 4px #b71c1c; }
+  100% { box-shadow: 0 0 16px #f44336; }
+}
+
+/* Decision Panel 2-Column Grid Layout */
+.decision-panel-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.35fr;
+  gap: 20px;
+  align-items: stretch;
+}
+
+@media (max-width: 900px) {
+  .decision-panel-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.narrative-column {
+  background: #141414;
+  border: 1px dashed var(--border-sepia);
+  padding: 16px 20px;
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 10px;
+}
+
+.decision-title {
+  font-family: var(--font-title);
+  font-size: 1.15rem;
+  color: var(--text-light);
+  letter-spacing: 2px;
+}
+
+.decision-description {
+  font-family: var(--font-newsreel);
+  font-size: 0.92rem;
+  line-height: 1.45;
+  color: var(--text-muted);
+}
+
+.choices-column {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* Opções de Ação Interativas (Cards de Escolha Retro) */
+.action-options-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.choice-card {
+  background: #171717;
+  border: 2px solid var(--border-sepia);
+  border-radius: 5px;
+  padding: 12px 16px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  transition: all 0.22s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  box-shadow: 3px 3px 0 #000;
+  text-align: left;
+  width: 100%;
+}
+
+.choice-card:hover {
+  background: #242424;
+  border-color: var(--accent-gold);
+  transform: translate(-3px, -3px);
+  box-shadow: 6px 6px 0 #000;
+}
+
+.choice-card.disabled-unaffordable {
+  opacity: 0.45;
+  filter: grayscale(80%);
+  cursor: not-allowed;
+  border-color: #555 !important;
+  box-shadow: none !important;
+  transform: none !important;
+  background: #111 !important;
+}
+
+.choice-card.disabled-unaffordable:hover {
+  transform: none !important;
+  box-shadow: none !important;
+  border-color: #555 !important;
+}
+
+.choice-card-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex: 1;
+}
+
+.choice-badge-num {
+  background: var(--text-light);
+  color: #000;
+  font-family: var(--font-title);
+  font-weight: 900;
+  font-size: 0.75rem;
+  padding: 4px 8px;
+  border-radius: 3px;
+  letter-spacing: 1px;
+  white-space: nowrap;
+}
+
+.choice-card:hover .choice-badge-num {
+  background: var(--accent-gold);
+}
+
+.choice-text-content {
+  font-family: var(--font-newsreel);
+  font-size: 0.9rem;
+  color: var(--text-light);
+  line-height: 1.3;
+}
+
+/* Rodapé do Painel com Stats & Botão Concluir Turno */
+.decision-panel-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px dashed var(--border-sepia);
+  padding-top: 10px;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.active-nation-stats-bar {
+  display: flex;
+  gap: 16px;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+.stat-pill {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.stat-pill strong {
+  color: var(--text-light);
+}
+
+.btn-confirm-turn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--text-light);
+  color: var(--bg-darker);
+  border: 2px solid var(--text-light);
+  padding: 10px 20px;
+  font-family: var(--font-title);
+  font-size: 0.9rem;
+  font-weight: 900;
+  letter-spacing: 2px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 3px 3px 0 #000;
+}
+
+.btn-confirm-turn:hover {
+  background: #ffffff;
+  transform: translate(-2px, -2px);
+  box-shadow: 5px 5px 0 #000;
+}
+
+/* Footer News Ticker */
+.game-footer-bar {
+  position: relative;
+  z-index: 30;
+  width: 100%;
+  background: #050505;
+  border-top: 1px solid var(--border-sepia);
+  padding: 6px 20px;
+}
+
+.ticker-box {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 0.8rem;
+}
+
+.ticker-label {
+  font-family: var(--font-title);
+  color: var(--accent-gold);
+  white-space: nowrap;
+  letter-spacing: 1px;
+}
+
+.ticker-text {
+  color: var(--text-muted);
+  font-family: var(--font-newsreel);
+}
+
+/* ==========================================================================
+   Tela de Vitória / Derrota (Endgame Screen Overlay & Podium Animations)
+   ========================================================================== */
+.endgame-screen-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 12000;
+  background: rgba(0, 0, 0, 0.94);
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  overflow-y: auto;
+  animation: overlayFadeIn 0.5s ease-out;
+}
+
+@keyframes overlayFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Background Animated Spotlights & Confetti Particles */
+.endgame-bg-effects {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.victory-confetti-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.confetti-particle {
+  position: absolute;
+  top: -20px;
+  font-size: 1.4rem;
+  user-select: none;
+  animation: confettiFall 4s linear infinite;
+}
+
+@keyframes confettiFall {
+  0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+  100% { transform: translateY(105vh) rotate(720deg); opacity: 0; }
+}
+
+.spotlight-rotate-beam {
+  position: absolute;
+  top: -40%;
+  width: 50vw;
+  height: 140vh;
+  background: radial-gradient(ellipse at top, rgba(212, 175, 55, 0.15) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.spotlight-rotate-beam.left {
+  left: -10%;
+  animation: beamRotateLeft 8s ease-in-out infinite alternate;
+}
+
+.spotlight-rotate-beam.right {
+  right: -10%;
+  animation: beamRotateRight 8s ease-in-out infinite alternate;
+}
+
+@keyframes beamRotateLeft {
+  0% { transform: rotate(-15deg); }
+  100% { transform: rotate(15deg); }
+}
+
+@keyframes beamRotateRight {
+  0% { transform: rotate(15deg); }
+  100% { transform: rotate(-15deg); }
+}
+
+/* Main Endgame Card Container */
+.endgame-card {
+  position: relative;
+  z-index: 10;
+  width: 95%;
+  max-width: 1050px;
+  background: #0d0d0d;
+  border: 3px solid var(--accent-gold);
+  border-radius: 8px;
+  box-shadow: 0 0 60px rgba(212, 175, 55, 0.4);
+  padding: 28px 36px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  animation: cardPopSpin 0.65s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes cardPopSpin {
+  0% { transform: scale(0.4) rotate(-10deg); opacity: 0; }
+  100% { transform: scale(1) rotate(0deg); opacity: 1; }
+}
+
+/* Defeat / Impeachment Newspaper Spin Animation */
+.endgame-card.theme-defeat {
+  border-color: #b71c1c;
+  box-shadow: 0 0 60px rgba(183, 28, 28, 0.7);
+  animation: newspaperSpin 0.7s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+@keyframes newspaperSpin {
+  0% { transform: scale(0.1) rotate(-720deg); opacity: 0; }
+  100% { transform: scale(1) rotate(0deg); opacity: 1; }
+}
+
+.endgame-card-header {
+  text-align: center;
+  border-bottom: 1px dashed var(--border-sepia);
+  padding-bottom: 16px;
+}
+
+.endgame-badge {
+  font-family: var(--font-title);
+  font-size: 0.85rem;
+  letter-spacing: 3px;
+  color: var(--accent-gold);
+  text-transform: uppercase;
+}
+
+.endgame-card.theme-defeat .endgame-badge {
+  color: #ef5350;
+}
+
+.endgame-headline-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin: 8px 0;
+}
+
+.endgame-icon-hero {
+  font-size: 3rem;
+  line-height: 1;
+  animation: bounceHero 1.5s infinite alternate;
+}
+
+@keyframes bounceHero {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-8px); }
+}
+
+.endgame-title {
+  font-family: var(--font-title);
+  font-size: 2.2rem;
+  color: var(--text-light);
+  letter-spacing: 3px;
+}
+
+.endgame-card.theme-defeat .endgame-title {
+  color: #f44336;
+}
+
+.endgame-subtitle {
+  font-family: var(--font-newsreel);
+  font-size: 1rem;
+  color: var(--text-muted);
+  max-width: 750px;
+  margin: 0 auto;
+  line-height: 1.4;
+}
+
+/* Grid: Champion Spotlight Left | Full Leaderboard Right */
+.endgame-body-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.25fr;
+  gap: 24px;
+  align-items: stretch;
+}
+
+@media (max-width: 850px) {
+  .endgame-body-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Champion Spotlight Card */
+.champion-spotlight-card {
+  background: #141414;
+  border: 2px solid var(--accent-gold);
+  border-radius: 6px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 8px;
+  box-shadow: inset 0 0 20px rgba(212, 175, 55, 0.15);
+}
+
+.endgame-card.theme-defeat .champion-spotlight-card {
+  border-color: #b71c1c;
+  box-shadow: inset 0 0 20px rgba(183, 28, 28, 0.2);
+}
+
+.champion-crown {
+  background: var(--accent-gold);
+  color: #000;
+  font-family: var(--font-title);
+  font-weight: 900;
+  font-size: 0.78rem;
+  padding: 3px 12px;
+  letter-spacing: 2px;
+  border-radius: 3px;
+}
+
+.endgame-card.theme-defeat .champion-crown {
+  background: #b71c1c;
+  color: #fff;
+}
+
+.champion-avatar-box {
+  position: relative;
+  margin: 10px 0;
+  width: 90px;
+  height: 90px;
+  background: #090909;
+  border: 2px solid var(--border-sepia);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3.2rem;
+}
+
+.champion-flag {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  font-size: 1.6rem;
+}
+
+.champion-name {
+  font-family: var(--font-title);
+  font-size: 1.3rem;
+  color: var(--text-light);
+  letter-spacing: 2px;
+}
+
+.champion-nation-title {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  letter-spacing: 1px;
+}
+
+.champion-stats-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  width: 100%;
+  margin-top: 10px;
+}
+
+.champ-stat-pill {
+  background: #090909;
+  border: 1px solid var(--border-sepia);
+  padding: 6px 12px;
+  border-radius: 3px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.75rem;
+}
+
+.champ-stat-lbl {
+  color: var(--text-muted);
+}
+
+.champ-stat-val {
+  font-family: var(--font-title);
+  color: var(--accent-gold);
+  font-weight: bold;
+}
+
+.endgame-card.theme-defeat .champ-stat-val {
+  color: #ef5350;
+}
+
+/* Leaderboard List Right */
+.ranking-leaderboard-box {
+  background: #121212;
+  border: 1px dashed var(--border-sepia);
+  border-radius: 6px;
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.leaderboard-title {
+  font-family: var(--font-title);
+  font-size: 0.95rem;
+  letter-spacing: 2px;
+  color: var(--text-light);
+  border-bottom: 1px solid #222;
+  padding-bottom: 8px;
+}
+
+.leaderboard-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.leader-rank-item {
+  background: #181818;
+  border: 1px solid #2a2a2a;
+  border-radius: 4px;
+  padding: 10px 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  font-size: 0.88rem;
+}
+
+.leader-rank-item.is-winner {
+  border-color: var(--accent-gold);
+  background: #242015;
+}
+
+.rank-position-badge {
+  font-family: var(--font-title);
+  font-weight: 900;
+  font-size: 0.9rem;
+  color: var(--accent-gold);
+  width: 32px;
+}
+
+.rank-player-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex: 1;
+}
+
+.rank-player-name {
+  color: var(--text-light);
+  font-weight: bold;
+}
+
+.rank-score-badge {
+  font-family: var(--font-title);
+  font-size: 0.85rem;
+  color: var(--accent-gold);
+  background: #080808;
+  padding: 4px 10px;
+  border-radius: 3px;
+  border: 1px solid #333;
+}
+
+/* Endgame Action Footer */
+.endgame-footer {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  border-top: 1px dashed var(--border-sepia);
+  padding-top: 16px;
+  flex-wrap: wrap;
+}
+
+.btn-endgame-action {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 24px;
+  font-family: var(--font-title);
+  font-size: 0.95rem;
+  font-weight: 900;
+  letter-spacing: 2px;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: all 0.22s ease;
+  box-shadow: 3px 3px 0 #000;
+}
+
+.btn-endgame-action.primary {
+  background: var(--accent-gold);
+  color: #000;
+  border: 2px solid var(--accent-gold);
+}
+
+.btn-endgame-action.primary:hover {
+  background: #fff;
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0 #000;
+}
+
+.btn-endgame-action.secondary {
+  background: #1c1c1c;
+  color: var(--text-light);
+  border: 2px solid var(--border-sepia);
+}
+
+.btn-endgame-action.secondary:hover {
+  background: #2c2c2c;
+  border-color: var(--text-light);
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0 #000;
+}
+
+/* ==========================================================================
+   Modal de Tutorial & Guia do Líder (gameTutorialModal)
+   ========================================================================== */
+.tutorial-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 95;
+  background: rgba(0, 0, 0, 0.93);
+  backdrop-filter: blur(6px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  overflow-y: auto;
+  animation: tutorialFadeIn 0.4s ease-out;
+}
+
+@keyframes tutorialFadeIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.tutorial-card {
+  position: relative;
+  width: 95%;
+  max-width: 820px;
+  background: #0f0f0f;
+  border: 3px double var(--text-light);
+  border-radius: 8px;
+  box-shadow: 0 0 50px rgba(0, 0, 0, 0.95);
+  padding: 24px 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.tutorial-card-header {
+  text-align: center;
+  border-bottom: 1px dashed var(--border-sepia);
+  padding-bottom: 12px;
+}
+
+.tutorial-badge {
+  font-family: var(--font-title);
+  font-size: 0.8rem;
+  letter-spacing: 3px;
+  color: var(--accent-gold);
+}
+
+.tutorial-title {
+  font-family: var(--font-title);
+  font-size: 1.5rem;
+  color: var(--text-light);
+  letter-spacing: 2px;
+  margin: 4px 0;
+}
+
+.tutorial-subtitle {
+  font-family: var(--font-newsreel);
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+.tutorial-body-content {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-height: 55vh;
+  overflow-y: auto;
+  padding-right: 6px;
+}
+
+.tutorial-rule-box {
+  background: #151515;
+  border: 1px solid var(--border-sepia);
+  border-radius: 5px;
+  padding: 12px 16px;
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  transition: border-color 0.2s ease;
+}
+
+.tutorial-rule-box:hover {
+  border-color: var(--accent-gold);
+  background: #1c1c1c;
+}
+
+.rule-icon {
+  font-size: 2rem;
+  line-height: 1;
+  padding-top: 2px;
+}
+
+.rule-text-box {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.rule-heading {
+  font-family: var(--font-title);
+  font-size: 0.92rem;
+  letter-spacing: 1px;
+  color: var(--accent-gold);
+}
+
+.rule-desc {
+  font-family: var(--font-newsreel);
+  font-size: 0.86rem;
+  line-height: 1.4;
+  color: var(--text-light);
+}
+
+.tutorial-card-footer {
+  display: flex;
+  justify-content: center;
+  border-top: 1px dashed var(--border-sepia);
+  padding-top: 16px;
+}
+
+/* ==========================================================================
+   Movie Credits Roll Overlay (Estilo Filme de Cinema 1970)
+   ========================================================================== */
+.movie-credits-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 500000;
+  background: #000000;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.credits-toolbar {
+  position: absolute;
+  top: 24px;
+  right: 32px;
+  z-index: 500010;
+  display: flex;
+  gap: 12px;
+}
+
+.btn-credits-action {
+  font-family: var(--font-title);
+  font-size: 0.85rem;
+  letter-spacing: 2px;
+  padding: 10px 18px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.8);
+}
+
+.btn-credits-action.primary {
+  background: var(--text-light);
+  color: #000;
+  border: 1px solid var(--text-light);
+  font-weight: bold;
+}
+
+.btn-credits-action.primary:hover {
+  background: #ffffff;
+  transform: translate(-2px, -2px);
+  box-shadow: 4px 4px 0 #000;
+}
+
+.btn-credits-action.secondary {
+  background: rgba(255, 255, 255, 0.12);
+  color: var(--text-light);
+  border: 1px solid var(--text-light);
+}
+
+.btn-credits-action.secondary:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: translate(-2px, -2px);
+  box-shadow: 4px 4px 0 #000;
+}
+
+.movie-credits-stage {
+  position: relative;
+  width: 100%;
+  max-width: 800px;
+  height: 100%;
+  overflow: hidden;
+  text-align: center;
+}
+
+.movie-credits-roll {
+  position: absolute;
+  width: 100%;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+  padding: 40px 20px;
+  /* animation controlled via JS to ensure fresh start every time */
+  transform: translateY(75vh);
+}
+
+@keyframes rollUpMovieCredits {
+  0% { transform: translateY(75vh); }
+  100% { transform: translateY(-135%); }
+}
+
+.credits-logo {
+  font-family: var(--font-title);
+  font-size: 3.5rem;
+  font-weight: 900;
+  letter-spacing: 8px;
+  color: var(--text-light);
+  text-shadow: 0 0 20px rgba(255, 255, 255, 0.4);
+}
+
+.credits-subtitle {
+  font-family: var(--font-title);
+  font-size: 1.05rem;
+  letter-spacing: 4px;
+  color: var(--accent-gold);
+  text-transform: uppercase;
+}
+
+.credits-divider {
+  font-size: 1.2rem;
+  color: var(--border-sepia);
+  letter-spacing: 8px;
+}
+
+.credits-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+}
+
+.credits-section-title {
+  font-family: var(--font-title);
+  font-size: 1.15rem;
+  letter-spacing: 4px;
+  color: var(--accent-gold);
+  border-bottom: 1px solid var(--border-sepia);
+  padding-bottom: 6px;
+  margin-bottom: 8px;
+}
+
+.credits-names-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+  max-width: 600px;
+}
+
+.credits-name-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px dashed rgba(255, 255, 255, 0.15);
+  padding-bottom: 8px;
+  font-size: 1.2rem;
+}
+
+.credits-name {
+  font-family: var(--font-newsreel);
+  color: var(--text-light);
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.credits-number {
+  font-family: var(--font-title);
+  color: var(--accent-gold);
+  font-weight: 900;
+  letter-spacing: 2px;
+}
+
+.credits-text {
+  font-family: var(--font-newsreel);
+  font-size: 1.05rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+.credits-footer-end {
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.credits-the-end {
+  font-family: var(--font-title);
+  font-size: 2.2rem;
+  letter-spacing: 6px;
+  color: var(--text-light);
+}
+
+.credits-copyright {
+  font-family: var(--font-title);
+  font-size: 0.75rem;
+  letter-spacing: 2px;
+  color: var(--text-muted);
+}
+
+/* ==========================================================================
+   BREAKING NEWS NEWSPAPER OVERLAY (Jornal / Gazeta Geopolítica Retro)
+   ========================================================================== */
+
+.newspaper-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.88);
+  backdrop-filter: blur(8px);
+  z-index: 9500;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  animation: fadeInModal 0.3s ease forwards;
+}
+
+.newspaper-card {
+  background: #f4ebd9;
+  background-image: 
+    radial-gradient(#e2d5bd 1px, transparent 0),
+    linear-gradient(180deg, #f7f0e3 0%, #ebe0cb 100%);
+  background-size: 16px 16px, 100% 100%;
+  color: #12100e;
+  border: 4px solid #1c1815;
+  outline: 2px dashed #8c7a65;
+  outline-offset: -8px;
+  border-radius: 4px;
+  width: 100%;
+  max-width: 780px;
+  max-height: 90vh;
+  overflow-y: auto;
+  padding: 24px;
+  box-shadow: 
+    0 25px 50px -12px rgba(0, 0, 0, 0.9),
+    0 0 40px rgba(212, 175, 55, 0.25);
+  animation: newspaperSpinIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+  position: relative;
+}
+
+@keyframes newspaperSpinIn {
+  0% {
+    transform: scale(0.1) rotate(-360deg);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1) rotate(0deg);
+    opacity: 1;
+  }
+}
+
+.newspaper-header {
+  text-align: center;
+  margin-bottom: 16px;
+}
+
+.newspaper-top-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: #3d352b;
+  text-transform: uppercase;
+}
+
+.newspaper-masthead-title {
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 2.2rem;
+  font-weight: 900;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: #0f0c09;
+  margin: 4px 0;
+  text-shadow: 1px 1px 0 rgba(0,0,0,0.15);
+}
+
+.newspaper-divider-thick {
+  height: 4px;
+  background: #1c1815;
+  margin: 6px 0 4px 0;
+}
+
+.newspaper-sub-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: #594d3f;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.newspaper-divider-thin {
+  height: 1px;
+  background: #1c1815;
+  margin: 4px 0 16px 0;
+}
+
+/* Main Body & Headline */
+.newspaper-badge-extra {
+  display: inline-block;
+  background: #b71c1c;
+  color: #ffffff;
+  font-family: var(--font-title);
+  font-size: 0.75rem;
+  font-weight: 900;
+  letter-spacing: 2px;
+  padding: 4px 10px;
+  border-radius: 2px;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.newspaper-headline {
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 1.8rem;
+  font-weight: 900;
+  line-height: 1.15;
+  color: #0c0a08;
+  text-transform: uppercase;
+  margin: 6px 0 10px 0;
+  border-bottom: 2px solid #8c7a65;
+  padding-bottom: 8px;
+}
+
+.newspaper-subheadline {
+  font-family: 'Georgia', serif;
+  font-style: italic;
+  font-size: 1.05rem;
+  color: #3b332a;
+  line-height: 1.35;
+  margin-bottom: 16px;
+}
+
+/* Grid Layout inside Newspaper */
+.newspaper-content-grid {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 18px;
+  align-items: start;
+}
+
+@media (max-width: 640px) {
+  .newspaper-content-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.newspaper-photo-box {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.newspaper-photo-frame {
+  background: #2a241e;
+  border: 2px solid #1c1815;
+  height: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  box-shadow: inset 0 0 15px #000;
+  border-radius: 2px;
+}
+
+.newspaper-photo-frame .photo-icon {
+  font-size: 4.5rem;
+  filter: drop-shadow(0 2px 8px rgba(0,0,0,0.5));
+}
+
+.photo-caption {
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 0.72rem;
+  font-style: italic;
+  color: #594d3f;
+  line-height: 1.2;
+  text-align: center;
+}
+
+.newspaper-text-column {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.newspaper-paragraph {
+  font-family: 'Georgia', serif;
+  font-size: 0.95rem;
+  line-height: 1.55;
+  color: #1a1612;
+  text-align: justify;
+}
+
+.newspaper-paragraph::first-letter {
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 3rem;
+  float: left;
+  line-height: 0.75;
+  margin-right: 8px;
+  margin-top: 4px;
+  font-weight: 900;
+  color: #0f0c09;
+}
+
+.newspaper-impact-pill {
+  background: #e8d9bd;
+  border: 1.5px solid #8c7a65;
+  color: #2b2217;
+  font-family: var(--font-title);
+  font-size: 0.8rem;
+  font-weight: 700;
+  padding: 8px 12px;
+  border-radius: 4px;
+  letter-spacing: 0.5px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* Newspaper Footer CTA */
+.newspaper-footer {
+  margin-top: 24px;
+  padding-top: 16px;
+  border-top: 2px double #1c1815;
+  display: flex;
+  justify-content: center;
+}
+
+.btn-newspaper-close {
+  background: #1c1815;
+  color: #f4ebd9;
+  font-family: var(--font-title);
+  font-size: 0.95rem;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  padding: 14px 32px;
+  border: 2px solid #d4af37;
+  border-radius: 4px;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+  transition: all 0.2s ease;
+}
+
+.btn-newspaper-close:hover {
+  background: #d4af37;
+  color: #1c1815;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(212, 175, 55, 0.5);
+}
